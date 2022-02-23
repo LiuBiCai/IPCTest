@@ -21,5 +21,16 @@ namespace MessageObject
    
               return message;
           }
+
+        public static string taskInfo = string.Empty;
+        public void Add(string taskInfo)
+        {
+            Console.WriteLine("Add:{0}", taskInfo);
+        }
+        public string GetTask()
+        {
+            Console.WriteLine("GetTask;{0}", taskInfo);
+            return taskInfo;
+        }
      }
 }

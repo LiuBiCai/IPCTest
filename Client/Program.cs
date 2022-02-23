@@ -15,6 +15,7 @@ namespace Client
         {
             RemoteObject objRemoteObject = ConnectServer();
             Send(objRemoteObject);
+            string message = Console.ReadLine();
         }
         private static void Send(RemoteObject objRemoteObject)
         {
@@ -26,6 +27,9 @@ namespace Client
                 {
                     objRemoteObject.SendMessage(message);
                     Console.WriteLine("send success");
+
+                    var task = objRemoteObject.GetTask();
+                    Console.WriteLine(task);
                 }
                 catch (System.Runtime.Remoting.RemotingException)
                 {

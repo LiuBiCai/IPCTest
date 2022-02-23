@@ -25,6 +25,7 @@ namespace IPCTest
              ChannelServices.RegisterChannel(channel, false);
               RemotingConfiguration.RegisterWellKnownServiceType(typeof(RemoteObject), "RemoteObject", WellKnownObjectMode.SingleCall);
               Console.WriteLine("message server running...");
+            RemoteObject.taskInfo = "Test";
          }
          private static void ReceviceMessage()
          {
@@ -37,6 +38,11 @@ namespace IPCTest
                       {
                           string message = qMessage.Dequeue();
                           Console.WriteLine("recevice message is:" +message);
+                         if(message=="Task")
+                        {
+                            message = Console.ReadLine();
+                            RemoteObject.taskInfo = message;
+                        }
                       }
                 }
                   Thread.Sleep(1000);  //每一秒获取一次
